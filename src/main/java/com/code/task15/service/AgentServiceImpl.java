@@ -28,7 +28,7 @@ public class AgentServiceImpl implements AgentService {
         List<AgentEntity> agentEntities = agentRepository.getAgentsData(
                 new BeanPropertyRowMapper<>(AgentEntity.class));
 
-        List<AgentDto> agentDtos = agentEntities.stream().map(s-> s.toDto(AgentDto.class))
+        List<AgentDto> agentDtos = agentEntities.stream().map(s-> s.toDto())
                 .collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(agentDtos);
