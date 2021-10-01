@@ -16,16 +16,17 @@ public class AgentRepositoryImpl implements AgentRepository {
 
     private String queryAgentAll;
 
-    @Value("${query.agent.by.id}")
     private String queryById;
 
     private final DataSource dataSource;
 
     @Autowired
     public AgentRepositoryImpl(@Qualifier("Datasource") DataSource dataSource,
-                               @Value("${query.agent.all}") String queryAgentAll) {
+                               @Value("${query.agent.all}") String queryAgentAll,
+                               @Value("${query.agent.by.id}") String queryById) {
         this.dataSource = dataSource;
         this.queryAgentAll = queryAgentAll;
+        this.queryById = queryById;
     }
 
 
