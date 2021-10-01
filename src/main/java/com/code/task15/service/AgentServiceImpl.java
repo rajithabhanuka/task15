@@ -33,4 +33,12 @@ public class AgentServiceImpl implements AgentService {
 
         return ResponseEntity.status(HttpStatus.OK).body(agentDtos);
     }
+
+    @Override
+    public ResponseEntity<AgentDto> getAgentDataById(int id) {
+
+        AgentEntity entity = agentRepository.getById(id, new BeanPropertyRowMapper<>(AgentEntity.class));
+
+        return ResponseEntity.status(HttpStatus.OK).body(entity.toDto());
+    }
 }

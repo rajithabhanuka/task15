@@ -8,4 +8,6 @@ import java.util.List;
 public interface AgentService {
 
     ResponseEntity<List<AgentDto>> getAgentData();
+
+    ResponseEntity<AgentDto> getAgentDataById(int id);
 }

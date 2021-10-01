@@ -5,7 +5,6 @@ import com.code.task15.repository.AgentRepository;
 import com.code.task15.repository.AgentRepositoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;

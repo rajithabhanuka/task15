@@ -8,4 +8,6 @@ import java.util.List;
 public interface AgentRepository {
 
     List<AgentEntity> getAgentsData(final BeanPropertyRowMapper<AgentEntity> mapper);
+
+    AgentEntity getById(int id, final BeanPropertyRowMapper<AgentEntity> mapper);
 }
