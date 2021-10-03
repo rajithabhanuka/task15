@@ -1,6 +1,7 @@
 package com.code.task15.controller;
 
 import com.code.task15.dto.AgentDto;
+import com.code.task15.exception.ResourceNotFoundException;
 import com.code.task15.service.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,13 @@ public class AgentController {
 
         String uri = "http://localhost:8080/agents/find?id=" + id;
         RestTemplate restTemplate = new RestTemplate();
-        AgentDto result = restTemplate.getForObject(uri, AgentDto.class);
+
+        AgentDto result = null;
+        try {
+            result = restTemplate.getForObject(uri, AgentDto.class);
+        }catch (Exception e){
+            throw new ResourceNotFoundException("Agent not found!", "agent id", "" + id);
+        }
         return ResponseEntity.ok(result);
     }
 

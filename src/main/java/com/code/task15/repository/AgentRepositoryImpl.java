@@ -37,6 +37,6 @@ public class AgentRepositoryImpl implements AgentRepository {
 
     @Override
     public AgentEntity getById(int id, BeanPropertyRowMapper<AgentEntity> mapper) {
-        return new JdbcTemplate(dataSource).queryForObject(queryById, new Object[]{id}, mapper);
+        return new JdbcTemplate(dataSource).queryForObject(queryById, mapper, id);
     }
 }
