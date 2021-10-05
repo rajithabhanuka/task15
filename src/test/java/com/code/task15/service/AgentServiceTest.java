@@ -39,7 +39,9 @@ public class AgentServiceTest {
     @Test
     public void TestGetMethod() {
 
-        AgentRepositoryImpl agentRepository = new AgentRepositoryImpl(dataSource, AGENT_GET_QUERY, AGENT_BY_ID);
+        AgentRepositoryImpl agentRepository = new AgentRepositoryImpl();
+        agentRepository.setDataSource(dataSource);
+        agentRepository.setQueryAgentAll(AGENT_GET_QUERY);
 
         Assertions.assertEquals(3, agentRepository.getAgentsData(new BeanPropertyRowMapper<>(AgentEntity.class)).size());
     }
@@ -47,7 +49,9 @@ public class AgentServiceTest {
     @Test
     public void TestQueryById() {
 
-        AgentRepositoryImpl agentRepository = new AgentRepositoryImpl(dataSource, AGENT_GET_QUERY, AGENT_BY_ID);
+        AgentRepositoryImpl agentRepository = new AgentRepositoryImpl();
+        agentRepository.setDataSource(dataSource);
+        agentRepository.setQueryById(AGENT_BY_ID);
 
         Assertions.assertEquals("Success", agentRepository.getById(1, new BeanPropertyRowMapper<>(AgentEntity.class)).getActive());
     }

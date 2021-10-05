@@ -18,25 +18,30 @@ public class AgentRepositoryImpl implements AgentRepository {
 
     private String queryById;
 
-    private final DataSource dataSource;
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public AgentRepositoryImpl(@Qualifier("Datasource") DataSource dataSource,
-                               @Value("${query.agent.all}") String queryAgentAll,
-                               @Value("${query.agent.by.id}") String queryById) {
-        this.dataSource = dataSource;
+    public void setDataSource(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    @Autowired
+    public void setQueryAgentAll(@Value("${query.agent.all}")String queryAgentAll) {
         this.queryAgentAll = queryAgentAll;
+    }
+
+    @Autowired
+    public void setQueryById(@Value("${query.agent.by.id}") String queryById) {
         this.queryById = queryById;
     }
 
-
     @Override
     public List<AgentEntity> getAgentsData(BeanPropertyRowMapper<AgentEntity> mapper) {
-        return new JdbcTemplate(dataSource).query(queryAgentAll, mapper);
+        return jdbcTemplate.query(queryAgentAll, mapper);
     }
 
     @Override
     public AgentEntity getById(int id, BeanPropertyRowMapper<AgentEntity> mapper) {
-        return new JdbcTemplate(dataSource).queryForObject(queryById, mapper, id);
+        return jdbcTemplate.queryForObject(queryById, mapper, id);
     }
 }
