@@ -3,7 +3,6 @@ package com.code.task15.service;
 
 import com.code.task15.model.AgentEntity;
 import com.code.task15.repository.AgentRepositoryImpl;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -12,11 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.test.util.ReflectionTestUtils;
-
-import javax.sql.DataSource;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AgentServiceMockitoTest {
