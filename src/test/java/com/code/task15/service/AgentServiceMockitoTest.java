@@ -24,16 +24,6 @@ public class AgentServiceMockitoTest {
     @Mock
     JdbcTemplate jdbcTemplate;
 
-    DataSource dataSource;
-
-    @Before
-    public void testSetup() {
-        dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:jdbc/schema.sql")
-                .addScript("classpath:jdbc/data.sql")
-                .build();
-    }
-
     private static final String AGENT_BY_ID = "SELECT id as id, " +
             "agent_id as agentId, user_id as userId, active as active, " +
             "create_date as createDate, modified_date as modifiedDate FROM agent WHERE id = ?;";
